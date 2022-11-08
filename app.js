@@ -13,10 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 // solve cors
-app.use(cors({
-    credentials: true,
-    origin: 'https://ajudamais.herokuapp.com/*'
-}))
+app.use(cors())
 
 //upload directory
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")))

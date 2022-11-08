@@ -13,10 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 // solve cors
-app.use(cors({
-    credentials: true,
-    origin: 'http://localhost:3000'
-}))
+app.use(cors())
 
 //upload directory
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")))
@@ -27,6 +24,11 @@ require("./config/db.js")
 //routes
 const router = require("./routes/Router.js")
 app.use(router)
+
+app.use(express.static(path.join(__dirname, '../build')))
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, '../build'))
+})
 
 app.listen(port, () => {
     console.log(`App rodando na porta ${port}`)

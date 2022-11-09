@@ -46,7 +46,7 @@ const storageTypes = {
 const imageUpload = multer({
     storage: storageTypes.s3,
     fileFilter: (req, file, cb) => {
-        if(!file.originalname.match(/\.(png|jpg)$/)){
+        if(!file.originalname.match(/\.(png|jpg|jpeg)$/)){
             //only png ou jpeg
             return cb(new Error("Por favor, envia apenas .png ou .jpg"))
         }

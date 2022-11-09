@@ -93,7 +93,7 @@ const update = async(req, res) => {
     let profileImage = null
 
     if(req.file){
-        profileImage = req.file.filename
+        profileImage = req.file.location
     }
 
     const reqUser = req.user
